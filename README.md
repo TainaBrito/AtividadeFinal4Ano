@@ -72,4 +72,9 @@ Os requisitos que serão implementados consistem no cadastro, visualização, at
 ![image](https://github.com/TainaBrito/AtividadeFinal4Ano/assets/108409645/89373697-47b8-48e4-ae0d-72b3f4144328)
 
 * Banco de Dados
+  
   Conforme os requisitos implementados, fez-se necessário o uso auxiliar de um Banco de Dados para o armazenamento das informações coletadas.
+
+
+  ![image](https://github.com/TainaBrito/AtividadeFinal4Ano/assets/108409645/cfd33d75-94ae-489e-87db-46f648451a4f)
+
