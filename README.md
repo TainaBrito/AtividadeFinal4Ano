@@ -21,7 +21,7 @@ O usuário deverá selecionar a aba correspondente ao que deseja acessar. Para r
     Descrição: O sistema deve conceder aos funcionários a capacidade de cadastrar novas maquiagens.
 
     Prioridade: Essencial
-
+ 
 * [RF002] Visualização de Produtos
 
     Descrição: O sistema deve permitir a visualização de produtos existentes.
