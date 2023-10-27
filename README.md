@@ -1,3 +1,4 @@
+# AtividadeFinal4Ano
 # TB Makes - Controle de Maquiagens
 
 A TB Makes é um projeto de software que está sendo criado pela estudante Tainá Brito, que cursa o ensino médio técnico integrado em Informática no IFRN. O objetivo desse projeto é ajudar a loja de maquiagem TB Makes a gerenciar seu estoque de produtos de maquiagem. O software está sendo desenvolvido em linguagem Python e utilizará o PostgreSQL 15.1 para armazenar dados, sendo executado no local.
@@ -21,7 +22,7 @@ O usuário deverá selecionar a aba correspondente ao que deseja acessar. Para r
     Descrição: O sistema deve conceder aos funcionários a capacidade de cadastrar novas maquiagens.
 
     Prioridade: Essencial
- 
+
 * [RF002] Visualização de Produtos
 
     Descrição: O sistema deve permitir a visualização de produtos existentes.
@@ -65,3 +66,10 @@ O usuário deverá selecionar a aba correspondente ao que deseja acessar. Para r
 
 ## Diagramação  
 * Casos de uso
+
+Os requisitos que serão implementados consistem no cadastro, visualização, atualização e deleção de produtos. Por meio do diagrama de Caso de Uso, é possível analisar a conexão entre o administrador e as funções de cadastrar, atualizar e deletar produtos.
+
+![image](https://github.com/TainaBrito/AtividadeFinal4Ano/assets/108409645/89373697-47b8-48e4-ae0d-72b3f4144328)
+
+* Banco de Dados
+  Conforme os requisitos implementados, fez-se necessário o uso auxiliar de um Banco de Dados para o armazenamento das informações coletadas.
