@@ -1,4 +1,4 @@
-View 
+Controler
 
 // Definindo um objeto para representar o estoque
 const estoque = {};
@@ -38,7 +38,7 @@ function deletarProdutoDoEstoque(nome, quantidadeInicial) {
   } else {
     estoque[nome] -= quantidadeInicial;
   }
-  console.log(`${quantidadeInicial} unidades de ${nome} foram deletadas dgio estoque.`);
+  console.log(`${quantidadeInicial} unidades de ${nome} foram deletadas do estoque.`);
 }
 
 // Exemplo de uso:
@@ -47,4 +47,7 @@ adicionarProdutoAoEstoque("Sombra", 30);
 listarEstoque();
 
 atualizarQuantidadeNoEstoque("Batom", 40);
+listarEstoque();
+
+deletarProdutoDoEstoque("Batom", 10);
 listarEstoque();

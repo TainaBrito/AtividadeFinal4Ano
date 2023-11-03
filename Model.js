@@ -1,8 +1,4 @@
-
-Controle
-
-
-
+Model
 // Definindo um array para armazenar os produtos da loja
 const produtos = [];
 
@@ -62,7 +58,7 @@ function realizarVenda(cliente, produtosVendidos) {
 }
 
 // Função para deletar um produto
-function deletarProduto(nome, quantidade) {
+function deletarProdutoDoEstoque(nome, quantidade) {
     const produto = {
       nome,
       quantidade,
@@ -75,8 +71,14 @@ function deletarProduto(nome, quantidade) {
 adicionarProduto("Batom", 10.99, 50);
 adicionarProduto("Sombra", 15.99, 30);
 
+
 adicionarCliente("Maria", "maria@example.com");
 adicionarCliente("João", "joao@example.com");
+
+
+deletarProdutoDoEstoque("Batom", "5");
+deletarProdutoDoEstoque("Sombra", "10");
+
 
 realizarVenda(clientes[0], [
   { nome: "Batom", quantidade: 2 },
