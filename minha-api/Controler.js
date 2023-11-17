@@ -9,9 +9,22 @@ function adicionarProdutoAoEstoque(nome, quantidadeInicial) {
     estoque[nome] += quantidadeInicial;
   }
   console.log(`${quantidadeInicial} unidades de ${nome} foram adicionadas ao estoque.`);
-
   app.get('/', (req, res) => {
     res.send('Produtos adicionados');
+  });
+  
+}
+
+// Função para adicionar um cliente ao sistema
+function adicionarClienteAoSistema(nome, numeroTelefone) {
+  if (!sistema[nome]) {
+    sistema[nome] = nome;
+  } else {
+    sistema[numeroTelefone] = numeroTelefone;
+  }
+  console.log(`${nome} foi adicionado ao sistema.`);
+  app.get('/', (req, res) => {
+    res.send('Cliente adicionado');
   });
   
 }

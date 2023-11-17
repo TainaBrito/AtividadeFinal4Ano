@@ -1,4 +1,3 @@
-
 // Definindo um array para armazenar os produtos da loja
 const produtos = [];
 
@@ -20,6 +19,23 @@ function adicionarProduto(nome, preco, quantidade) {
   };
   produtos.push(produto);
   console.log(`Produto ${nome} adicionado ao estoque.`);
+  app.get('/', (req, res) => {
+    res.send('Produto adicionado');
+  });
+}
+
+// Função para atualizar um produto ao estoque
+function atualizarProduto(nome, preco, quantidade) {
+  const produto = {
+    nome,
+    preco,
+    quantidade,
+  };
+  produtos.push(produto);
+  console.log(`Produto ${nome} atualizado.`);
+  app.get('/', (req, res) => {
+    res.send('Produto atualizado');
+  });
 }
 
 // Função para adicionar um cliente
@@ -30,6 +46,22 @@ function adicionarCliente(nome, email) {
   };
   clientes.push(cliente);
   console.log(`Cliente ${nome} adicionado.`);
+  app.get('/', (req, res) => {
+    res.send('Cliente adicionado');
+  });
+}
+
+// Função para atualizar um cliente
+function atualizarCliente(nome, email) {
+  const cliente = {
+    nome,
+    email,
+  };
+  clientes.push(cliente);
+  console.log(`Cliente ${nome} atualizado.`);
+  app.get('/', (req, res) => {
+    res.send('Cliente atualizado');
+  });
 }
 
 // Função para realizar uma venda
@@ -39,6 +71,9 @@ function realizarVenda(cliente, produtosVendidos) {
     produtosVendidos,
     data: new Date(),
   };
+  app.get('/', (req, res) => {
+    res.send('Venda realizada');
+  })
 
   vendas.push(venda);
 
@@ -65,6 +100,9 @@ function deletarProdutoDoEstoque(nome, quantidade) {
     };
     produto.push(produto);
     console.log(`Produto ${nome} deletado.`);
+    app.get('/', (req, res) => {
+      res.send('Produtos deletados');
+    });
   }
 
 // Exemplo de uso:

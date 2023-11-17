@@ -68,12 +68,14 @@
         function adicionarProduto() {
             var produtoInput = document.getElementById('produto');
             var precoInput = document.getElementById('preco');
+            var quantidadeInput = document.getElementById('quantidade');
             var listaProdutos = document.getElementById('lista-produtos');
 
             var produto = produtoInput.value;
             var preco = precoInput.value;
+            var quantidade = quantidadeInput.value;
 
-            if (produto && preco) {
+            if (produto && preco && quantidade) {
                 var newRow = listaProdutos.insertRow();
                 var cell1 = newRow.insertCell(0);
                 var cell2 = newRow.insertCell(1);
@@ -81,10 +83,12 @@
 
                 cell1.innerHTML = produto;
                 cell2.innerHTML = `R$ ${preco}`;
-                cell3.innerHTML = '<button onclick="removerProduto(this)">Remover</button>';
+                cell3.innerHTML = quantidade;
+                cell4.innerHTML = '<button onclick="removerProduto(this)">Remover</button>';
 
                 produtoInput.value = '';
                 precoInput.value = '';
+                quantidadeInput.value = '';
             }
             
             // Rota para adicionar produto
@@ -100,9 +104,11 @@
 
             var produto = cells[0].innerHTML;
             var preco = cells[1].innerHTML.replace('R$ ', '');
+            var quantidade = cells[2].innerHTML;
 
             document.getElementById('produto').value = produto;
             document.getElementById('preco').value = preco;
+            document.getElementById('quantidade').value = quantidade;
 
             // Remover a linha antiga após editar
             row.parentNode.removeChild(row);
