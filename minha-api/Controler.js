@@ -2,35 +2,38 @@
 const estoque = {};
 
 // Função para adicionar um produto ao estoque
-function adicionarProdutoAoEstoque(nome, quantidadeInicial) {
+function adicionarProdutoAoEstoque(req, res) {
+  const {nome, quantidadeInicial} = req.body;
   if (!estoque[nome]) {
     estoque[nome] = quantidadeInicial;
   } else {
     estoque[nome] += quantidadeInicial;
   }
   console.log(`${quantidadeInicial} unidades de ${nome} foram adicionadas ao estoque.`);
-  app.get('/', (req, res) => {
+  
     res.send('Produtos adicionados');
-  });
+  
   
 }
 
 // Função para adicionar um cliente ao sistema
-function adicionarClienteAoSistema(nome, numeroTelefone) {
+function adicionarClienteAoSistema(req, res) {
+  const{ nome,numeroTelefone} = req.body
   if (!sistema[nome]) {
     sistema[nome] = nome;
   } else {
     sistema[numeroTelefone] = numeroTelefone;
   }
   console.log(`${nome} foi adicionado ao sistema.`);
-  app.get('/', (req, res) => {
+ 
     res.send('Cliente adicionado');
-  });
+  
   
 }
 
 // Função para atualizar a quantidade de um produto no estoque
-function atualizarQuantidadeNoEstoque(nome, quantidade) {
+function atualizarQuantidadeNoEstoque(req, res) {
+  const{ nome, quantidade} = req.body
   if (estoque[nome] !== undefined) {
     estoque[nome] = quantidade;
     console.log(`A quantidade de ${nome} no estoque foi atualizada para ${quantidade}.`);
@@ -38,22 +41,19 @@ function atualizarQuantidadeNoEstoque(nome, quantidade) {
     console.log(`Produto ${nome} não encontrado no estoque.`);
   }
 
-  app.get('/', (req, res) => {
     res.send('Produtos Atualizados');
-  });
   
 }
 
 // Função para listar o estoque atual
-function listarEstoque() {
+function listarEstoque(req, res) {
+  const{ estoque} = req.body
   console.log("Estoque atual:");
   for (const produto in estoque) {
     console.log(`${produto}: ${estoque[produto]} unidades`);
   }
-
-  app.get('/', (req, res) => {
     res.send('Quantidade de produtos');
-  });
+
   
 }
 
@@ -82,3 +82,10 @@ listarEstoque();
 
 deletarProdutoDoEstoque("Batom", 10);
 listarEstoque();
+
+module.exports = {adicionarProdutoAoEstoque}
+module.exports = {adicionarClienteAoSistema}
+module.exports = {atualizarQuantidadeNoEstoque}
+module.exports = {listarEstoque}
+module.exports = {deletarProdutoDoEstoque}
+
