@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TB Makes</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffe6e6;
+            color: #333;
+            text-align: center;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #ff99cc;
+        }
+        form {
+            margin-top: 20px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 5px;
+        }
+        button {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>TB Makes</h1>
+
+    <form id="form" onsubmit="return false;">
+        <label for="produto">Produto:</label>
+        <input type="text" id="produto" required>
+        <label for="preco">Preço:</label>
+        <input type="number" id="preco" required>
+        <button onclick="adicionarProduto()">Adicionar Produto</button>
+    </form>
+
+    <h2>Lista de Produtos</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Produto</th>
+                <th>Preço</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody id="lista-produtos">
+            <!-- Aqui serão listados os produtos -->
+        </tbody>
+    </table>
+
+    <script>
+        function adicionarProduto() {
+            var produtoInput = document.getElementById('produto');
+            var precoInput = document.getElementById('preco');
+            var listaProdutos = document.getElementById('lista-produtos');
+
+            var produto = produtoInput.value;
+            var preco = precoInput.value;
+
+            if (produto && preco) {
+                var newRow = listaProdutos.insertRow();
+                var cell1 = newRow.insertCell(0);
+                var cell2 = newRow.insertCell(1);
+                var cell3 = newRow.insertCell(2);
+
+                cell1.innerHTML = produto;
+                cell2.innerHTML = `R$ ${preco}`;
+                cell3.innerHTML = '<button onclick="removerProduto(this)">Remover</button>';
+
+                produtoInput.value = '';
+                precoInput.value = '';
+            }
+            
+            // Rota para adicionar produto
+                app.post('/adicionarProduto', (req, res) => {
+            // Lógica para adicionar produto
+                res.send('Produto adicionado com sucesso!');
+                });
+        }
+
+        function editarProduto(button) {
+            var row = button.parentNode.parentNode;
+            var cells = row.getElementsByTagName('td');
+
+            var produto = cells[0].innerHTML;
+            var preco = cells[1].innerHTML.replace('R$ ', '');
+
+            document.getElementById('produto').value = produto;
+            document.getElementById('preco').value = preco;
+
+            // Remover a linha antiga após editar
+            row.parentNode.removeChild(row);
+
+            // Rota para editar produto
+                app.put('/editarProduto', (req, res) => {
+            // Lógica para editar produto
+                res.send('Produto editado com sucesso!');
+                });
+        }
+
+        function removerProduto(button) {
+            var row = button.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+            // Rota para remover produto
+                app.delete('/removerProduto', (req, res) => {
+            // Lógica para remover produto
+                res.send('Produto removido com sucesso!');
+                });
+        }
+    </script>
+</body>
+</html>
