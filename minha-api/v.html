@@ -1,136 +1,162 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>TB Makes</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #ffe6e6;
-            color: #333;
-            text-align: center;
-            margin: 20px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        table, th, td {
-            border: 1px solid #ccc;
-        }
-        th, td {
-            padding: 10px;
-            text-align: left;
-        }
-        th {
-            background-color: #ff99cc;
-        }
-        form {
-            margin-top: 20px;
-        }
-        input, button {
-            padding: 10px;
-            margin: 5px;
-        }
-        button {
-            cursor: pointer;
-        }
-    </style>
-</head>
-<body>
-    <h1>TB Makes</h1>
+    <link
+      href="https://w7.pngwing.com/pngs/189/930/png-transparent-yves-saint-laurent-cosmetics-perfume-lipstick-ysl-vinyl-cream-lip-stain-salvatore-ferragamo-spa.png"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://marimaria.vteximg.com.br/arquivos/ids/161815/Base-Cover-Up-Matte-laranja-Mari-Maria-MM22.png?v=638104602407670000"
+      rel="stylesheet"
+    />
+    <link href="style.css" rel="stylesheet" />
+    <link
+      rel="icon"
+      href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS36IIBlm81DZgYp5bjTQN9yygsrN6nVbiE19SCmNQKeb5llwgAx63wmaaxbqr0fL6CjOk&usqp=CAU"
+    />
+  </head>
+  <body class="maquiagem">
+    <header>
+      <nav class="navbar">
+        <div class="container-fluid">
+          <a class="navbar-brand text-light"
+            >TB <span style="font-weight: bold">Makes</span>
+            <img
+              width="48"
+              height="48"
+              src="https://w7.pngwing.com/pngs/574/993/png-transparent-chanel-sunscreen-foundation-rouge-fashion-chanel-powder-cosmetics-fashion-chanel.png"
+              alt="cheeseburger" /></a
+          ><!--<a  href="https://icons8.com/icon/E3l2HAe3zEBV/maquiagem">maquiagem</a> icon by <a href="https://icons8.com">Icons8</a>-->
+          <form class="d-flex justify-content-around" role="search">
+            <button
+              type="button"
+              class="btn negrito"
+              style="background-color: #ce0071; color: white"
+              data-bs-toggle="modal"
+              data-bs-target="#modalCadastro"
+              onclick="listarProdutos('modalCadastro')"
+            >
+              Listar Produtos
+            </button>
+            <button
+              type="button"
+              class="btn negrito"
+              style="background-color: #8b0085; color: white; margin-left: 10px"
+              onclick="logout()"
+            >
+              Sair
+            </button>
+          </form>
+        </div>
+      </nav>
+    </header>
+    <main
+      class="d-flex justify-content-around p-3 align-items-center flex-wrap"
+      id="cardsContainer"
+    ></main>
 
-    <form id="form" onsubmit="return false;">
-        <label for="produto">Produto:</label>
-        <input type="text" id="produto" required>
-        <label for="preco">Preço:</label>
-        <input type="number" id="preco" required>
-        <label for="quantidade">Quantidade:</label>
-        <input type="text" id="quantidade" required>
-        <button onclick="adicionarProduto()">Adicionar Produto</button>
-    </form>
-
-    <h2>Lista de Produtos</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Produto</th>
-                <th>Preço</th>
-                <th>Quantidade</th>
-            </tr>
-        </thead>
-        <tbody id="lista-produtos">
-            <!-- Aqui serão listados os produtos -->
-        </tbody>
-    </table>
-
-    <script>
-        function adicionarProduto() {
-            var produtoInput = document.getElementById('produto');
-            var precoInput = document.getElementById('preco');
-            var quantidadeInput = document.getElementById('quantidade');
-            var listaProdutos = document.getElementById('lista-produtos');
-
-            var produto = produtoInput.value;
-            var preco = precoInput.value;
-            var quantidade = quantidadeInput.value;
-
-            if (produto && preco && quantidade) {
-                var newRow = listaProdutos.insertRow();
-                var cell1 = newRow.insertCell(0);
-                var cell2 = newRow.insertCell(1);
-                var cell3 = newRow.insertCell(2);
-
-                cell1.innerHTML = produto;
-                cell2.innerHTML = `R$ ${preco}`;
-                cell3.innerHTML = quantidade;
-                cell4.innerHTML = '<button onclick="removerProduto(this)">Remover</button>';
-
-                produtoInput.value = '';
-                precoInput.value = '';
-                quantidadeInput.value = '';
-            }
-            
-            // Rota para adicionar produto
-                app.post('/adicionarProduto', (req, res) => {
-            // Lógica para adicionar produto
-                res.send('Produto adicionado com sucesso!');
-                });
-        }
-
-        function editarProduto(button) {
-            var row = button.parentNode.parentNode;
-            var cells = row.getElementsByTagName('td');
-
-            var produto = cells[0].innerHTML;
-            var preco = cells[1].innerHTML.replace('R$ ', '');
-            var quantidade = cells[2].innerHTML;
-
-            document.getElementById('produto').value = produto;
-            document.getElementById('preco').value = preco;
-            document.getElementById('quantidade').value = quantidade;
-
-            // Remover a linha antiga após editar
-            row.parentNode.removeChild(row);
-
-            // Rota para editar produto
-                app.put('/editarProduto', (req, res) => {
-            // Lógica para editar produto
-                res.send('Produto editado com sucesso!');
-                });
-        }
-
-        function removerProduto(button) {
-            var row = button.parentNode.parentNode;
-            row.parentNode.removeChild(row);
-            // Rota para remover produto
-                app.delete('/removerProduto', (req, res) => {
-            // Lógica para remover produto
-                res.send('Produto removido com sucesso!');
-                });
-        }
-    </script>
-</body>
+    <div
+      class="modal fade"
+      id="modalCadastro"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+      id="cardsContainer"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">
+              Cadastrar Produtos
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body modalCadastro"></div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cancelar
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="cadastrarProduto()"
+            >
+              Adicionar Produtos
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="modal fade"
+      id="modalEdicao"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+      id="cardsContainer"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">
+              Atualizar Produtos
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body modalEdicao"></div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cancelar
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              id="editarPedido"
+              onclick="atualizarProduto()"
+            >
+              Editar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="alerta" id="alerta">
+      <div class="card-container">
+        <div id="alert-text">Alerta!</div>
+        <div class="loading-bar">
+          <div class="progress-bar"></div>
+        </div>
+      </div>
+    </div>
+    <div class="loader" id="loader"></div>
+    <script
+      src="https://img2.gratispng.com/20180302/fdq/kisspng-chanel-lipstick-designer-cosmetics-chanel-chanel-new-rouge-miss-coco-lipstick-5a9a13b5d7f9f9.9613789015200470298847.jpg"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="main.js"></script>
+  </body>
 </html>
